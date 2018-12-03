@@ -38,5 +38,5 @@ def find_common_characters(word1, word2):
 words = ['abcde', 'fghij', 'klmno', 'pqrst', 'fguij', 'axcye', 'wvxyz']
 assert(find_words_that_differ_by_one_character(words) == 'fgij')
 
-words = readInput('/home/todd/code/AdventOfCode/2018/day2/data/input.txt')
+words = readInput('/home/todd/code/AdventOfCode/2018/data/day02.txt')
 print(find_words_that_differ_by_one_character(words))

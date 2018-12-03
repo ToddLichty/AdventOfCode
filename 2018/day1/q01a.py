@@ -5,5 +5,5 @@ def readInput(file):
     return [int(x.strip()) for x in lines] 
 
 if __name__ == "__main__":
-    lines = readInput('/home/todd/code/AdventOfCode/2018/day1/data/q01a_input.txt')
+    lines = readInput('/home/todd/code/AdventOfCode/2018/data/day01.txt')
     print(sum(lines))

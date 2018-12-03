@@ -25,5 +25,5 @@ if __name__ == "__main__":
     assert first_repeated_frequency([-6, 3, 8, 5, -6]) == 5
     assert first_repeated_frequency([7, 7, -2, -7, -4]) == 14
 
-    lines = readInput('/home/todd/code/AdventOfCode/2018/day1/data/q01a_input.txt')
+    lines = readInput('/home/todd/code/AdventOfCode/2018/data/day01.txt')
     print(first_repeated_frequency(lines))

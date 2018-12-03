@@ -27,4 +27,4 @@ def find_product(words):
 
 assert find_product(['abcdef', 'bababc', 'abbcde', 'abcccd', 'aabcdd', 'abcdee', 'ababab']) == 12
 
-print(find_product(readInput('/home/todd/code/AdventOfCode/2018/day2/data/input.txt')))
+print(find_product(readInput('/home/todd/code/AdventOfCode/2018/data/day02.txt')))
