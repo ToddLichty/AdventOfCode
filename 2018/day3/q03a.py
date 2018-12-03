@@ -1,3 +1,5 @@
+import re 
+
 n = 1000
 m = 1000
 
@@ -12,7 +14,7 @@ def readInput(file):
     return [(x.strip()) for x in lines] 
 
 
-def count_overlaps():
+def count_overlaps() -> int:
     num = 0
     for i in range(len(cloth)):
         for j in range(len(cloth[i])):
@@ -55,12 +57,8 @@ def run_instruction(instruction):
             #2 @ 3,1: 4x4
             #3 @ 5,5: 2x2
     '''
-    claim_id = int(instruction.split("@")[0].strip()[1:])
-    coordinates = instruction.split(":")[0]
-    coordinates = coordinates.split("@")[1].strip().split(",")
-    width_height_values = instruction.split(":")[1].strip().split("x")
-
-    mark_area(claim_id, int(coordinates[0]), int(coordinates[1]), int(width_height_values[0]), int(width_height_values[1]))
+    values = [int(x) for x in re.match('#([0-9]+) @ ([0-9]+),([0-9]+): ([0-9]+)x([0-9]+)', instruction).groups()]
+    mark_area(values[0], values[1], values[2], values[3], values[4])
 
 
 def test():
@@ -77,8 +75,6 @@ def test():
     assert count_overlaps() == 4
 
     assert 3 in clean_claims
-    print(clean_claims)
-
 
 instructions = readInput('/home/todd/code/AdventOfCode/2018/data/day03.txt')
 for instruction in instructions:
