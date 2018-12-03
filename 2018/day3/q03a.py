@@ -4,7 +4,6 @@ m = 1000
 cloth = [['.'] * m for i in range(n)]
 
 clean_claims = []
-dirty_claims = []
 
 def readInput(file):
     with open(file) as f:
@@ -38,9 +37,6 @@ def mark_area(claim_id, row, column, width, height):
             if cloth[c][r] == '.':
                 cloth[c][r] = claim_id
             else:
-                # if claim_id not in dirty_claims:
-                #     dirty_claims.append(claim_id)
-                
                 if cloth[c][r] in clean_claims:
                     clean_claims.remove(cloth[c][r])
                     
