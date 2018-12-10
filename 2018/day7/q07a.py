@@ -1,5 +1,8 @@
 from collections import defaultdict
 import pprint
+import string
+import re
+from pathlib import Path
 
 class Graph(object):
     """ Graph data structure, undirected by default. """
@@ -81,16 +84,6 @@ def parse_instructions(instructions):
 
     return connections
 
-
-instructions = {
-    'Step C must be finished before step A can begin.',
-    'Step C must be finished before step F can begin.',
-    'Step A must be finished before step B can begin.',
-    'Step A must be finished before step D can begin.',
-    'Step B must be finished before step E can begin.',
-    'Step D must be finished before step E can begin.',
-    'Step F must be finished before step E can begin.',
-}
 
 instructions = read_input('/home/todd/code/AdventOfCode/2018/data/day07.txt')
 print(process_instructions(parse_instructions(instructions)))
