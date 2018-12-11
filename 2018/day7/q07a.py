@@ -1,8 +1,11 @@
 from collections import defaultdict
 import pprint
 import string
+<<<<<<< c16f0b90f6bbfc60dcceebfe5b75d2ce2f20a592
 import re
 from pathlib import Path
+=======
+>>>>>>> completed day 10
 
 class Graph(object):
     """ Graph data structure, undirected by default. """
@@ -85,5 +88,75 @@ def parse_instructions(instructions):
     return connections
 
 
+<<<<<<< c16f0b90f6bbfc60dcceebfe5b75d2ce2f20a592
 instructions = read_input('/home/todd/code/AdventOfCode/2018/data/day07.txt')
 print(process_instructions(parse_instructions(instructions)))
+=======
+instructions = {
+    'Step C must be finished before step A can begin.',
+    'Step C must be finished before step F can begin.',
+    'Step A must be finished before step B can begin.',
+    'Step A must be finished before step D can begin.',
+    'Step B must be finished before step E can begin.',
+    'Step D must be finished before step E can begin.',
+    'Step F must be finished before step E can begin.',
+}
+
+class Worker:
+    def __init__(self):
+        self.current_step = ''
+        self.finished = -1
+
+def free_worker(workers):
+    for worker in workers:
+        if worker.current_step == '':
+            return worker
+    
+    return None
+
+num_workers = 2
+interval = 0
+
+connections = parse_instructions(instructions)
+g = Graph(connections, directed=True)
+
+pp = pprint.PrettyPrinter(indent=4)
+pp.pprint(g._graph)
+
+workers = []
+workers.append(Worker())
+
+second = 0
+
+k = g.get_childless()
+last_step = None
+
+while True:
+    print("Second = " + str(second))
+    #did any step finish?
+    for worker in workers:
+        if worker.current_step != '':
+            if worker.finished <= second:
+                print(worker.current_step + ' finished')
+                g.remove(worker.current_step)
+                pp.pprint(g._graph)
+                worker.current_step = ''
+
+    if len(g._graph) == 1:
+        last_step = list(g._graph['F'])[0]
+
+    for a in g.get_childless():
+        w = free_worker(workers)
+        if w != None:
+            print('assigning ' + str(a) + ' to worker 0')
+            w.current_step = a
+            w.finished = second + interval + string.ascii_lowercase.index(a.lower()) + 1
+
+            print(str(a) + ' will take ' + str(w.finished))
+
+    second += 1
+
+
+# instructions = read_input('/home/todd/code/AdventOfCode/2018/data/day07.txt')
+# print(process_instructions(parse_instructions(instructions)))
+>>>>>>> completed day 10

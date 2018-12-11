@@ -8,8 +8,13 @@ def read_input(file):
         lines = f.readlines()
 
     for line in lines:
+<<<<<<< c16f0b90f6bbfc60dcceebfe5b75d2ce2f20a592
         [x,y,vx,vy] = list(map(int, re.findall(r"[-\d]+",line)))
         points.append((x,y,vx,vy))
+=======
+        [x, y, vx, vy] = list(map(int, re.findall(r"[-\d]+",line)))
+        points.append((x, y, vx, vy))
+>>>>>>> completed day 10
 
 def update():
     result = []
@@ -18,6 +23,7 @@ def update():
     
     return result
 
+<<<<<<< c16f0b90f6bbfc60dcceebfe5b75d2ce2f20a592
 def display_image():
     x0 = min(x[0] for x in points)
     x1 = max(x[0] for x in points)
@@ -41,6 +47,8 @@ def display_image():
     return '\n'.join(rows)
 
 
+=======
+>>>>>>> completed day 10
 read_input('/home/todd/code/AdventOfCode/2018/data/day10.txt')
 
 i = 0
