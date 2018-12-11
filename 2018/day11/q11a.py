@@ -1,58 +1,38 @@
-'''
-Find the fuel cell's rack ID, which is its X coordinate plus 10.
-Begin with a power level of the rack ID times the Y coordinate.
-Increase the power level by the value of the grid serial number (your puzzle input).
-Set the power level to itself multiplied by the rack ID.
-Keep only the hundreds digit of the power level (so 12345 becomes 3; numbers with no hundreds digit become 0).
-Subtract 5 from the power level.
-'''
 
-grid = [[0 for i in range(1,302)] for j in range(1,302)]
 
-def calculate_power_level(x, y, serial_number):
-    rack_id = x + 10
-    power_level = rack_id * y
-    power_level += serial_number
+import numpy
+serial = 1723
+
+def power(x, y):
+    rack = (x + 1) + 10
+    power = rack * (y + 1)
+    power += serial
+    power *= rack
+    return (power // 100 % 10) - 5
+
+def calculate_power_level(x, y):
+    rack_id = (x + 1) + 10
+    power_level = rack_id * (y + 1)
+    power_level += serial
     power_level *= rack_id
-    power_level = ((power_level // 100)%10) - 5
-    return power_level
+    return ((power_level // 100)%10) - 5
 
-def calc_square_level(x, y):
-    sum_ = 0
-    for row in range(x, x+3):
-        for col in range(y, y+3):
-            sum_ += grid[row][col]
+grid = numpy.fromfunction(calculate_power_level, (300, 300))
 
-    return sum_
+max_power = 0
+max_location = None
+max_width = 0
 
-def populate_grid(serial_number):
-    for col in range(1, 301):
-        for row in range(1, 301):
-            grid[col][row] = calculate_power_level(col, row, serial_number)
+for width in range(3, 300):
+    windows = sum(grid[x:x-width+1 or None, y:y-width+1 or None] for x in range(width) for y in range(width))
+    maximum = int(windows.max())
+    location = numpy.where(windows == maximum)
 
-def get_max_power_square():
-    max_power = 0
-    coords = ()
+    print(width, maximum, location[0][0] + 1, location[1][0] + 1, max_power)
 
-    for col in range(1, 299):
-        for row in range(1, 299):
-            power = calc_square_level(col, row)
-            if power > max_power:
-                max_power = power
-                coords = (col, row)
+    if maximum > max_power:
+        max_power = maximum
+        max_location = numpy.where(windows == maximum)
+        max_width = width
 
-    return (max_power, coords[0], coords[1])
-
-assert calculate_power_level(3, 5, 8) ==  4
-assert calculate_power_level(217, 196, 39) == 0
-assert calculate_power_level(122, 79, 57) == -5
-assert calculate_power_level(101, 153, 71) == 4
-
-populate_grid(18)
-assert get_max_power_square() == (29, 33, 45)
-
-populate_grid(42)
-assert get_max_power_square() == (30, 21, 61)
-
-populate_grid(1723)
-print(get_max_power_square())
+print(max_width, max_power, max_location[0][0] + 1, max_location[1][0] + 1)
