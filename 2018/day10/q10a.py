@@ -8,8 +8,18 @@ def read_input(file):
         lines = f.readlines()
 
     for line in lines:
+<<<<<<< HEAD
         [x, y, vx, vy] = list(map(int, re.findall(r"[-\d]+",line)))
         points.append((x, y, vx, vy))
+=======
+<<<<<<< c16f0b90f6bbfc60dcceebfe5b75d2ce2f20a592
+        [x,y,vx,vy] = list(map(int, re.findall(r"[-\d]+",line)))
+        points.append((x,y,vx,vy))
+=======
+        [x, y, vx, vy] = list(map(int, re.findall(r"[-\d]+",line)))
+        points.append((x, y, vx, vy))
+>>>>>>> completed day 10
+>>>>>>> faafa2896e289d0ada347e20dd73273c4adffb33
 
 def update():
     result = []
@@ -18,6 +28,35 @@ def update():
     
     return result
 
+<<<<<<< HEAD
+=======
+<<<<<<< c16f0b90f6bbfc60dcceebfe5b75d2ce2f20a592
+def display_image():
+    x0 = min(x[0] for x in points)
+    x1 = max(x[0] for x in points)
+    y0 = min(x[1] for x in points)
+    y1 = max(x[1] for x in points)
+
+    dx = x1 - x0
+    dy = y1 - y0
+
+    p = set((x[0], x[1]) for x in points)
+
+    rows = []
+    for y in range(y0, y1 + 1):
+        row = []
+        for x in range(x0, x1 + 1):
+            if (x, y) in p:
+                row.append("X")
+            else:
+                row.append(".")
+        rows.append(''.join(row))
+    return '\n'.join(rows)
+
+
+=======
+>>>>>>> completed day 10
+>>>>>>> faafa2896e289d0ada347e20dd73273c4adffb33
 read_input('/home/todd/code/AdventOfCode/2018/data/day10.txt')
 
 i = 0

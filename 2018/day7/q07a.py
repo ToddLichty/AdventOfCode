@@ -1,6 +1,14 @@
 from collections import defaultdict
 import pprint
 import string
+<<<<<<< HEAD
+=======
+<<<<<<< c16f0b90f6bbfc60dcceebfe5b75d2ce2f20a592
+import re
+from pathlib import Path
+=======
+>>>>>>> completed day 10
+>>>>>>> faafa2896e289d0ada347e20dd73273c4adffb33
 
 class Graph(object):
     """ Graph data structure, undirected by default. """
@@ -83,6 +91,10 @@ def parse_instructions(instructions):
     return connections
 
 
+<<<<<<< c16f0b90f6bbfc60dcceebfe5b75d2ce2f20a592
+instructions = read_input('/home/todd/code/AdventOfCode/2018/data/day07.txt')
+print(process_instructions(parse_instructions(instructions)))
+=======
 instructions = {
     'Step C must be finished before step A can begin.',
     'Step C must be finished before step F can begin.',
@@ -150,3 +162,7 @@ while True:
 
 # instructions = read_input('/home/todd/code/AdventOfCode/2018/data/day07.txt')
 # print(process_instructions(parse_instructions(instructions)))
+<<<<<<< HEAD
+=======
+>>>>>>> completed day 10
+>>>>>>> faafa2896e289d0ada347e20dd73273c4adffb33
