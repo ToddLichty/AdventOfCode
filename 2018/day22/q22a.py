@@ -22,11 +22,7 @@ class Region(object):
     def calculate_geologic_index(self):
         global cave
 
-        if self.x == 0 and self.y == 0:
-            self.geologic_index = 0
-        elif self.x == TARGET[1] and self.y == TARGET[0]:
-            self.geologic_index = 0
-        elif self.y == 0:
+        if self.y == 0:
             self.geologic_index = self.x * 16807
         elif self.x == 0:
             self.geologic_index = self.y * 48271
