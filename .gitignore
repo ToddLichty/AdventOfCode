@@ -109,3 +109,7 @@ dmypy.json
 
 # End of https://www.gitignore.io/api/python
 2019/test.py
+2019/day_10.py
+2019/data/day_10.in
+2019/day_11.py
+2019/data/day_11.in
